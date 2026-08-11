@@ -1,19 +1,21 @@
 impl Solution {
     pub fn remove_duplicates(nums: &mut Vec<i32>) -> i32 {
+        let mut u=0;
+        let mut n= u+1;
         if nums.is_empty() {
             return 0;
         }
-
-        let mut write = 1;
-
-        for read in 1..nums.len() {
-            if nums[read] != nums[read - 1] {
-                nums[write] = nums[read];
-                write += 1;
+        while(n<nums.len()){
+            if(nums[u]==nums[n]){
+                n = n+1;
+            }
+            else{
+                u= u+1;
+                nums[u]=nums[n];
+                n= n+1;
             }
         }
-
-        write as i32
+        (u +1) as i32
         
     }
 }
